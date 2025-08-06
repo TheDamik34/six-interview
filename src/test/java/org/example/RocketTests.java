@@ -62,4 +62,15 @@ public class RocketTests {
             Rocket rocket = new Rocket(name);
         });
     }
+
+    @Test
+    void shouldThrow_WhenNameIsTooLong() {
+        // given
+        String name = "This Name Is Too Long This Name Is Too Long This Name Is Too Long This Name Is Too Long This Name Is Too Long This Name Is Too Long";
+
+        // when + then
+        assertThrows(IllegalArgumentException.class, () -> {
+            Rocket rocket = new Rocket(name);
+        });
+    }
 }
