@@ -12,6 +12,18 @@ public final class Mission {
     }
 
     public Mission(String name) {
+        if (name == null) {
+            throw new NullPointerException("Supplied name cannot be null");
+        }
+
+        if (name.isEmpty()) {
+            throw new IllegalArgumentException("Supplied name cannot be empty");
+        }
+
+        if (name.length() > 15) {
+            throw new IllegalArgumentException("Supplied name is too long");
+        }
+
         this.name = name;
         this.missionStatus = MissionStatus.SCHEDULED;
     }
