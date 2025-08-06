@@ -7,11 +7,11 @@ import java.util.Map;
 
 public final class RocketRepository {
     private final List<Rocket> rocketList;
-    private final Map<Rocket, Mission> rocketsMission;
+    private final Map<Rocket, Mission> rocketMissionMap;
 
     public RocketRepository() {
         this.rocketList = new ArrayList<>();
-        this.rocketsMission = new HashMap<>();
+        this.rocketMissionMap = new HashMap<>();
     }
 
     public void add(Rocket rocket) {
@@ -35,11 +35,11 @@ public final class RocketRepository {
             throw new NullPointerException("Mission cannot be null");
         }
 
-        rocketsMission.put(rocket, mission);
+        rocketMissionMap.put(rocket, mission);
     }
 
     Map<Rocket, Mission> getRocketsMission() {
-        return rocketsMission;
+        return rocketMissionMap;
     }
 
     List<Rocket> getRockets() {
