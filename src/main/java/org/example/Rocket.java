@@ -7,10 +7,19 @@ public final class Rocket {
     private RocketStatus status;
 
     public Rocket() {
+        this.name = "Unnamed Rocket";
         this.status = RocketStatus.ON_GROUND;
     }
 
     public Rocket(String name) {
+        if (name == null) {
+            throw new NullPointerException("Supplied name cannot be null");
+        }
+
+        if (name.isEmpty()) {
+            throw new IllegalArgumentException("Supplied name cannot be empty");
+        }
+
         this.name = name;
         this.status = RocketStatus.ON_GROUND;
     }
