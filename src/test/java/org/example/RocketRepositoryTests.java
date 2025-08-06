@@ -53,6 +53,7 @@ public class RocketRepositoryTests {
 
         // when
         rocketRepository.add(rocket);
+        rocketRepository.add(mission);
         rocketRepository.assignRocketToMission(rocket, mission);
 
         // then
@@ -69,6 +70,7 @@ public class RocketRepositoryTests {
 
         // when
         rocketRepository.add(rocket);
+        rocketRepository.add(mission);
         rocketRepository.assignRocketToMission(rocket, mission);
 
         // then
@@ -97,6 +99,7 @@ public class RocketRepositoryTests {
 
         // when
         rocketRepository.add(rocket);
+        rocketRepository.add(mission);
         rocketRepository.assignRocketToMission(rocket, mission);
 
         // then
@@ -136,6 +139,7 @@ public class RocketRepositoryTests {
 
         // when
         rocketRepository.add(rocket);
+        rocketRepository.add(mission);
         rocketRepository.assignRocketToMission(rocket, mission);
 
         // then
@@ -153,6 +157,7 @@ public class RocketRepositoryTests {
         // when
         rocketRepository.add(rocket);
         rocketRepository.add(rocket2);
+        rocketRepository.add(mission);
         rocketRepository.assignRocketToMission(rocket, mission);
         rocketRepository.assignRocketToMission(rocket2, mission);
 
