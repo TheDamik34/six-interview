@@ -113,4 +113,16 @@ public class RocketRepositoryTests {
         assertEquals(1, rocketRepository.getMissions().size());
         assertTrue(rocketRepository.getMissions().contains(mission));
     }
+
+    @Test
+    void shouldThrow_WhenAddedMissionIsNotInScheduledStatus() {
+        // given
+        Mission mission = new Mission();
+        mission.setStatus(MissionStatus.PENDING);
+
+        // when + then
+        assertThrows(IllegalArgumentException.class, () -> {
+            rocketRepository.add(mission);
+        });
+    }
 }
