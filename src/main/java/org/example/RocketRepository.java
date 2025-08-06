@@ -71,6 +71,10 @@ public final class RocketRepository {
             throw new IllegalStateException("Rocket already have a mission assigned");
         }
 
+        if (mission.getMissionStatus() == MissionStatus.ENDED) {
+            throw new IllegalStateException("New rockets cannot be assigned to ENDED missions");
+        }
+
         handleMissionStatus(rocket, mission);
 
         rocket.setStatus(RocketStatus.IN_SPACE);
