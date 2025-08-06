@@ -20,6 +20,10 @@ public final class Rocket {
             throw new IllegalArgumentException("Supplied name cannot be empty");
         }
 
+        if (name.length() > 15) {
+            throw new IllegalArgumentException("Supplied name is too long");
+        }
+
         this.name = name;
         this.status = RocketStatus.ON_GROUND;
     }
