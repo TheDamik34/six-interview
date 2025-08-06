@@ -65,7 +65,9 @@ public final class RocketRepository {
         if (missionToRocketsMap.containsKey(mission)) {
             missionToRocketsMap.get(mission).add(rocket);
         } else {
-            missionToRocketsMap.put(mission, List.of(rocket));
+            List<Rocket> rockets = new ArrayList<>();
+            rockets.add(rocket);
+            missionToRocketsMap.put(mission, rockets);
         }
     }
 
