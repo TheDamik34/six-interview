@@ -75,6 +75,10 @@ public final class RocketRepository {
             throw new IllegalStateException("New rockets cannot be assigned to ENDED missions");
         }
 
+        if (rocket.getStatus() == RocketStatus.IN_SPACE) {
+            throw new IllegalStateException("Rocket already on the mission");
+        }
+
         handleMissionStatus(rocket, mission);
 
         if (rocket.getStatus() == RocketStatus.ON_GROUND) {
@@ -105,8 +109,6 @@ public final class RocketRepository {
             boolean hasAnyRocketInRepair = missionToRocketsMap.get(mission)
                     .stream()
                     .anyMatch(rocket1 -> rocket1.getStatus() == RocketStatus.IN_REPAIR);
-
-            System.out.println(hasAnyRocketInRepair);
 
             if (hasAnyRocketInRepair) {
                 mission.setMissionStatus(MissionStatus.PENDING);
