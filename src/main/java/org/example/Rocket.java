@@ -10,4 +10,9 @@ public final class Rocket {
     public RocketStatus getStatus() {
         return status;
     }
+
+    @Override
+    public String toString() {
+        return "{RocketStatus: " + status + "}";
+    }
 }
