@@ -38,4 +38,16 @@ public class RocketTests {
         // then
         assertEquals(RocketStatus.IN_REPAIR, rocket.getStatus());
     }
+
+    @Test
+    void shouldCreateRocketWithName() {
+        // given
+        String name = "Red Dragon";
+
+        // when
+        Rocket rocket = new Rocket(name);
+
+        // then
+        assertEquals(name, rocket.getName());
+    }
 }
