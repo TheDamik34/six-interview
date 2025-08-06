@@ -9,11 +9,13 @@ public final class RocketRepository {
     private final List<Rocket> rocketList;
     private final List<Mission> missionList;
     private final Map<Rocket, Mission> rocketMissionMap;
+    private final Map<Mission, List<Rocket>> missionToRocketsMap;
 
     public RocketRepository() {
         this.rocketList = new ArrayList<>();
         this.missionList = new ArrayList<>();
         this.rocketMissionMap = new HashMap<>();
+        this.missionToRocketsMap = new HashMap<>();
     }
 
     public void add(Rocket rocket) {
@@ -59,6 +61,12 @@ public final class RocketRepository {
 
         rocket.setStatus(RocketStatus.IN_SPACE);
         rocketMissionMap.put(rocket, mission);
+
+        if (missionToRocketsMap.containsKey(mission)) {
+            missionToRocketsMap.get(mission).add(rocket);
+        } else {
+            missionToRocketsMap.put(mission, List.of(rocket));
+        }
     }
 
     List<Mission> getMissions() {
@@ -67,6 +75,10 @@ public final class RocketRepository {
 
     Map<Rocket, Mission> getRocketsMission() {
         return rocketMissionMap;
+    }
+
+    Map<Mission, List<Rocket>> getRocketsAssignedToMission() {
+        return missionToRocketsMap;
     }
 
     List<Rocket> getRockets() {

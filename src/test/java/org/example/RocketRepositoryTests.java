@@ -135,6 +135,7 @@ public class RocketRepositoryTests {
         Mission mission = new Mission();
 
         // when
+        rocketRepository.add(rocket);
         rocketRepository.assignMission(rocket, mission);
 
         // then
