@@ -77,7 +77,9 @@ public final class RocketRepository {
 
         handleMissionStatus(rocket, mission);
 
-        rocket.setStatus(RocketStatus.IN_SPACE);
+        if (rocket.getStatus() == RocketStatus.ON_GROUND) {
+            rocket.setStatus(RocketStatus.IN_SPACE);
+        }
 
         rocketMissionMap.put(rocket, mission);
 
@@ -102,9 +104,9 @@ public final class RocketRepository {
         if (missionToRocketsMap.containsKey(mission)) {
             boolean hasAnyRocketInRepair = missionToRocketsMap.get(mission)
                     .stream()
-                    .filter(rocket1 -> rocket1.getStatus() == RocketStatus.IN_REPAIR)
-                    .toList()
-                    .isEmpty();
+                    .anyMatch(rocket1 -> rocket1.getStatus() == RocketStatus.IN_REPAIR);
+
+            System.out.println(hasAnyRocketInRepair);
 
             if (hasAnyRocketInRepair) {
                 mission.setMissionStatus(MissionStatus.PENDING);
