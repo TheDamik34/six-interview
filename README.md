@@ -21,3 +21,10 @@ requirement4:
 requirement5:
  - I will create separate view of relation between rockets and missions as additional hashmap that will store Missions as keys and list of rockets assigned to it
  - New list will be updated accordingly in 'assignRocketToMission' method of repository class
+
+requirement6:
+ - just handling status for different cases in 'assignRocketToMission' method
+
+requirement7:
+ - I havent started with name for Mission and Rocket implementation as i wanted to be straight forward, but now i have added handling for names too
+
