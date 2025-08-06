@@ -14,3 +14,7 @@ requirement 2:
 
 requirement3:
  - I changed my mind, I implemented set method as package-private method and delegate correct status setting to repository
+
+requirement4:
+ - I am going to implement mission handling similarly to rockets, i will store missions in the list in the repository class
+ - 

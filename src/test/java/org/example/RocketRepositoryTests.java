@@ -100,4 +100,17 @@ public class RocketRepositoryTests {
         // then
         assertEquals(RocketStatus.IN_SPACE, rocket.getStatus());
     }
+
+    @Test
+    void shouldAddNewMission() {
+        // given
+        Mission mission = new Mission();
+
+        // when
+        rocketRepository.addMission(mission);
+
+        // then
+        assertEquals(1, rocketRepository.getMissions().size());
+        assertTrue(rocketRepository.getMissions().contains(mission));
+    }
 }
