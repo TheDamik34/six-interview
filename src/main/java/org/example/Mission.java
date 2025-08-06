@@ -1,8 +1,13 @@
 package org.example;
 
 public final class Mission {
+    private MissionStatus missionStatus;
 
     public Mission() {
-        // invariants check ...
+        this.missionStatus = MissionStatus.SCHEDULED;
+    }
+
+    public MissionStatus getMissionStatus() {
+        return missionStatus;
     }
 }

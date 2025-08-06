@@ -12,6 +12,6 @@ public class MissionTests {
         Mission mission = new Mission();
 
         // then
-        assertEquals(MissionStatus.SCHEDULED, mission.getStatus());
+        assertEquals(MissionStatus.SCHEDULED, mission.getMissionStatus());
     }
 }
