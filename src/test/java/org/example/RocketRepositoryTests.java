@@ -258,7 +258,7 @@ public class RocketRepositoryTests {
     }
 
     @Test
-    void shouldChangeMissionStatusToPending_WhenAtLeastOnRocketIsInRepair() {
+    void shouldChangeMissionStatusToPending_WhenAtLeastOneRocketIsInRepair() {
         // given
         Rocket rocket = new Rocket();
         Rocket rocketInRepair = new Rocket();

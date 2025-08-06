@@ -99,6 +99,19 @@ public final class RocketRepository {
             throw new NullPointerException("Mission is null");
         }
 
+        if (missionToRocketsMap.containsKey(mission)) {
+            boolean hasAnyRocketInRepair = missionToRocketsMap.get(mission)
+                    .stream()
+                    .filter(rocket1 -> rocket1.getStatus() == RocketStatus.IN_REPAIR)
+                    .toList()
+                    .isEmpty();
+
+            if (hasAnyRocketInRepair) {
+                mission.setMissionStatus(MissionStatus.PENDING);
+                return;
+            }
+        }
+
         if (rocket.getStatus() == RocketStatus.IN_REPAIR) {
             mission.setMissionStatus(MissionStatus.PENDING);
         } else {
