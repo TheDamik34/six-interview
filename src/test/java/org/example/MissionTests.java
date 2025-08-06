@@ -38,4 +38,15 @@ public class MissionTests {
             Mission rocket = new Mission(name);
         });
     }
+
+    @Test
+    void shouldThrow_WhenNameIsTooLong() {
+        // given
+        String name = "This Name Is Too Long This Name Is Too Long This Name Is Too Long This Name Is Too Long This Name Is Too Long This Name Is Too Long";
+
+        // when + then
+        assertThrows(IllegalArgumentException.class, () -> {
+            Mission rocket = new Mission(name);
+        });
+    }
 }
