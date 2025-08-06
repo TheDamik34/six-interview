@@ -224,4 +224,19 @@ public class RocketRepositoryTests {
         // then
         assertEquals(MissionStatus.PENDING, mission.getMissionStatus());
     }
+
+    @Test
+    void shouldChangeMissionStatusToInProgress() {
+        // given
+        Rocket rocket = new Rocket();
+        Mission mission = new Mission();
+        rocketRepository.add(mission);
+        rocketRepository.add(rocket);
+
+        // when
+        rocketRepository.assignRocketToMission(rocket, mission);
+
+        // then
+        assertEquals(MissionStatus.IN_PROGRESS, mission.getMissionStatus());
+    }
 }
