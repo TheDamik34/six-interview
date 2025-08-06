@@ -160,4 +160,18 @@ public class RocketRepositoryTests {
         assertTrue(rocketRepository.getRocketsAssignedToMission().containsKey(mission));
         assertEquals(List.of(rocket, rocket2), rocketRepository.getRocketsAssignedToMission().get(mission));
     }
+
+    @Test
+    void shouldThrow_WhenAddingTheSameRocket() {
+        // given
+        Rocket rocket = new Rocket();
+
+        // when
+        rocketRepository.add(rocket);
+
+        // then
+        assertThrows(IllegalStateException.class, () -> {
+            rocketRepository.add(rocket);
+        });
+    }
 }
