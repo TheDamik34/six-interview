@@ -10,4 +10,4 @@ requirement 2:
  - i go with HashMap implementation, but for thread safety we could use ConcurrentHashMap
  - I added Mission class for future implementation
  - I dont bother implementing equals method as Missions might be separate entities
- - 
+ - I implement additional check for rocket's existence in the storage list as I think it makes more sense to assign missions to rockets that the repository has.

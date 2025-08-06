@@ -74,4 +74,16 @@ public class RocketRepositoryTests {
             rocketRepository.assignMission(rocket, mission2);
         });
     }
+
+    @Test
+    void shouldThrow_WhenAssigningMissionToNonExistingRocket() {
+        // given
+        Mission mission = new Mission();
+        Rocket rocket = new Rocket();
+
+        // when + then
+        assertThrows(IllegalStateException.class, () -> {
+            rocketRepository.assignMission(rocket, mission);
+        });
+    }
 }
