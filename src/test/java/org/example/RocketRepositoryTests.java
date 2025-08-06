@@ -35,7 +35,7 @@ public class RocketRepositoryTests {
         Rocket rocket = new Rocket(RocketStatus.IN_SPACE);
 
         // when + then
-        assertThrows(RuntimeException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             rocketRepository.add(rocket);
         });
     }

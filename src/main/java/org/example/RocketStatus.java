@@ -1,5 +1,6 @@
 package org.example;
 
 public enum RocketStatus {
-    ON_GROUND
+    ON_GROUND,
+    IN_SPACE
 }
