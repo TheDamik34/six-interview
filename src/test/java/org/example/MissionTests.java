@@ -14,4 +14,16 @@ public class MissionTests {
         // then
         assertEquals(MissionStatus.SCHEDULED, mission.getMissionStatus());
     }
+
+    @Test
+    void shouldCreateNewMissionWithName() {
+        // given
+        String name = "Transit";
+
+        // when
+        Mission mission = new Mission(name);
+
+        // then
+        assertEquals(name, mission.getName());
+    }
 }
