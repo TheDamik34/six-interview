@@ -54,7 +54,7 @@ public class RocketRepositoryTests {
         rocketRepository.assignMission(rocket, mission);
 
         // then
-        assertTrue(rocketRepository.getRocketsMission().contains(rocket));
+        assertTrue(rocketRepository.getRocketsMission().containsKey(rocket));
         assertTrue(rocketRepository.getRocketsMission().get(rocket).equals(mission));
     }
 }

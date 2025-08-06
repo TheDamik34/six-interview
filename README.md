@@ -9,3 +9,5 @@ requirement 2:
  - i decided to implement relation of rocket-mission as a simple hashmap to decouple mission handling from rocket object itself as a repository should be storing missions
  - i go with HashMap implementation, but for thread safety we could use ConcurrentHashMap
  - I added Mission class for future implementation
+ - I dont bother implementing equals method as Missions might be separate entities
+ - 
