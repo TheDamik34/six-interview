@@ -20,7 +20,7 @@ public final class Mission {
             throw new IllegalArgumentException("Supplied name cannot be empty");
         }
 
-        if (name.length() > 15) {
+        if (name.length() > 20) {
             throw new IllegalArgumentException("Supplied name is too long");
         }
 
@@ -42,6 +42,6 @@ public final class Mission {
 
     @Override
     public String toString() {
-        return "{MissionStatus: " + missionStatus + "}";
+        return "{MissionName: " + name + ", MissionStatus: " + missionStatus + "}";
     }
 }
