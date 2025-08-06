@@ -3,6 +3,8 @@ package org.example;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RocketRepositoryTests {
@@ -124,5 +126,19 @@ public class RocketRepositoryTests {
         assertThrows(IllegalArgumentException.class, () -> {
             rocketRepository.add(mission);
         });
+    }
+
+    @Test
+    void shouldAssignRocketToMission() {
+        // given
+        Rocket rocket = new Rocket();
+        Mission mission = new Mission();
+
+        // when
+        rocketRepository.assignMission(rocket, mission);
+
+        // then
+        assertTrue(rocketRepository.getRocketsAssignedToMission().containsKey(mission));
+        assertEquals(List.of(rocket), rocketRepository.getRocketsAssignedToMission().get(mission));
     }
 }
