@@ -35,6 +35,10 @@ public final class RocketRepository {
             throw new NullPointerException("Mission cannot be null");
         }
 
+        if (!rocketList.contains(rocket)) {
+            throw new IllegalStateException("Rocket first must be stored to then be able to assign a mission to it");
+        }
+
         if (rocketMissionMap.containsKey(rocket)) {
             throw new IllegalStateException("Rocket already have a mission assigned");
         }
