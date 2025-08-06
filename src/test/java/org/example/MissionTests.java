@@ -3,6 +3,7 @@ package org.example;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class MissionTests {
 
@@ -25,5 +26,16 @@ public class MissionTests {
 
         // then
         assertEquals(name, mission.getName());
+    }
+
+    @Test
+    void shouldThrow_WhenNameIsInvalid() {
+        // given
+        String name = "";
+
+        // when + then
+        assertThrows(IllegalArgumentException.class, () -> {
+            Mission rocket = new Mission(name);
+        });
     }
 }
