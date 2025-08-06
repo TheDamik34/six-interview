@@ -13,4 +13,4 @@ requirement 2:
  - I implement additional check for rocket's existence in the storage list as I think it makes more sense to assign missions to rockets that the repository has.
 
 requirement3:
- - added public set method for status as part of API
+ - I changed my mind, I implemented set method as package-private method and delegate correct status setting to repository
