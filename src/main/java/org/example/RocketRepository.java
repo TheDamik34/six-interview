@@ -33,6 +33,10 @@ public final class RocketRepository {
             throw new NullPointerException("Mission cannot be null");
         }
 
+        if (mission.getMissionStatus() != MissionStatus.SCHEDULED) {
+            throw new IllegalArgumentException("Only missions that have SCHEDULED status can be added");
+        }
+
         missionList.add(mission);
     }
 

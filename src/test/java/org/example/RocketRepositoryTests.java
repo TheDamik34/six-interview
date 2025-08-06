@@ -118,7 +118,7 @@ public class RocketRepositoryTests {
     void shouldThrow_WhenAddedMissionIsNotInScheduledStatus() {
         // given
         Mission mission = new Mission();
-        mission.setStatus(MissionStatus.PENDING);
+        mission.setMissionStatus(MissionStatus.PENDING);
 
         // when + then
         assertThrows(IllegalArgumentException.class, () -> {

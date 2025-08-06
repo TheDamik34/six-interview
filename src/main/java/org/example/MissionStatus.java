@@ -1,5 +1,8 @@
 package org.example;
 
 public enum MissionStatus {
-    SCHEDULED
+    SCHEDULED,
+    PENDING,
+    IN_PROGRESS,
+    ENDED
 }
