@@ -10,7 +10,15 @@ public final class RocketRepository {
         this.rockets = new ArrayList<>();
     }
 
-    public int rocketsCount() {
+    public void add(Rocket rocket) {
+        rockets.add(rocket);
+    }
+
+    List<Rocket> getRockets() {
+        return rockets;
+    }
+
+    int rocketsCount() {
         return rockets.size();
     }
 }
