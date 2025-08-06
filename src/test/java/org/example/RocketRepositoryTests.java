@@ -42,4 +42,19 @@ public class RocketRepositoryTests {
             rocketRepository.add(rocket);
         });
     }
+
+    @Test
+    void shouldAssignMissionToRocket() {
+        // given
+        Mission mission = new Mission();
+        Rocket rocket = new Rocket();
+
+        // when
+        rocketRepository.add(rocket);
+        rocketRepository.assignMission(rocket, mission);
+
+        // then
+        assertTrue(rocketRepository.getRocketsMission().contains(rocket));
+        assertTrue(rocketRepository.getRocketsMission().get(rocket).equals(mission));
+    }
 }
