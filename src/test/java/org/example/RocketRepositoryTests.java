@@ -107,7 +107,7 @@ public class RocketRepositoryTests {
         Mission mission = new Mission();
 
         // when
-        rocketRepository.addMission(mission);
+        rocketRepository.add(mission);
 
         // then
         assertEquals(1, rocketRepository.getMissions().size());
