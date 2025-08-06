@@ -280,4 +280,27 @@ public class RocketRepositoryTests {
         // then
         assertEquals(MissionStatus.PENDING, mission.getMissionStatus());
     }
+
+    @Test
+    void shouldChangeMissionStatusToInProgress_WhenMultipleRocketsAreAssign() {
+        // given
+        Rocket rocket = new Rocket();
+        Rocket rocket2 = new Rocket();
+        Rocket rocket3 = new Rocket();
+
+        Mission mission = new Mission();
+
+        rocketRepository.add(mission);
+        rocketRepository.add(rocket);
+        rocketRepository.add(rocket2);
+        rocketRepository.add(rocket3);
+
+        // when
+        rocketRepository.assignRocketToMission(rocket, mission);
+        rocketRepository.assignRocketToMission(rocket2, mission);
+        rocketRepository.assignRocketToMission(rocket3, mission);
+
+        // then
+        assertEquals(MissionStatus.IN_PROGRESS, mission.getMissionStatus());
+    }
 }
