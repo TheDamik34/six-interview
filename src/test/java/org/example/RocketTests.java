@@ -26,4 +26,16 @@ public class RocketTests {
         // then
         assertEquals(RocketStatus.IN_SPACE, rocket.getStatus());
     }
+
+    @Test
+    void shouldChangeRocketStatusToInRepair() {
+        // given
+        Rocket rocket = new Rocket();
+
+        // when
+        rocket.setStatus(RocketStatus.IN_REPAIR);
+
+        // then
+        assertEquals(RocketStatus.IN_REPAIR, rocket.getStatus());
+    }
 }

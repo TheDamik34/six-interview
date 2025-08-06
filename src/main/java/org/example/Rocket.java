@@ -17,6 +17,10 @@ public final class Rocket {
         return status;
     }
 
+    public void setStatus(RocketStatus status) {
+        this.status = Objects.requireNonNull(status);
+    }
+
     @Override
     public String toString() {
         return "{RocketStatus: " + status + "}";
