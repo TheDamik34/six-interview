@@ -27,6 +27,10 @@ public final class RocketRepository {
             throw new IllegalArgumentException("Only rockets that have ON_GROUND status can be added");
         }
 
+        if (rocketList.contains(rocket)) {
+            throw new IllegalStateException("The same rocket cannot be added");
+        }
+
         rocketList.add(rocket);
     }
 
