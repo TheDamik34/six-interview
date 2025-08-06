@@ -4,7 +4,7 @@ public final class Rocket {
     private RocketStatus status;
 
     public Rocket() {
-        status = RocketStatus.ON_GROUND;
+        this.status = RocketStatus.ON_GROUND;
     }
 
     public RocketStatus getStatus() {
