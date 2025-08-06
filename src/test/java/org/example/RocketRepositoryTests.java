@@ -142,4 +142,22 @@ public class RocketRepositoryTests {
         assertTrue(rocketRepository.getRocketsAssignedToMission().containsKey(mission));
         assertEquals(List.of(rocket), rocketRepository.getRocketsAssignedToMission().get(mission));
     }
+
+    @Test
+    void shouldAssignTwoRocketsToSameMission() {
+        // given
+        Rocket rocket = new Rocket();
+        Rocket rocket2 = new Rocket();
+        Mission mission = new Mission();
+
+        // when
+        rocketRepository.add(rocket);
+        rocketRepository.add(rocket2);
+        rocketRepository.assignRocketToMission(rocket, mission);
+        rocketRepository.assignRocketToMission(rocket2, mission);
+
+        // then
+        assertTrue(rocketRepository.getRocketsAssignedToMission().containsKey(mission));
+        assertEquals(List.of(rocket, rocket2), rocketRepository.getRocketsAssignedToMission().get(mission));
+    }
 }
