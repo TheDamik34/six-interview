@@ -63,6 +63,10 @@ public final class RocketRepository {
             throw new IllegalStateException("Rocket first must be stored to then be able to assign a mission to it");
         }
 
+        if (!missionList.contains(mission)) {
+            throw new IllegalStateException("Mission first must be stored to then be able to be assigned to a rocket");
+        }
+
         if (rocketMissionMap.containsKey(rocket)) {
             throw new IllegalStateException("Rocket already have a mission assigned");
         }
