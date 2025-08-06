@@ -43,6 +43,7 @@ public final class RocketRepository {
             throw new IllegalStateException("Rocket already have a mission assigned");
         }
 
+        rocket.setStatus(RocketStatus.IN_SPACE);
         rocketMissionMap.put(rocket, mission);
     }
 

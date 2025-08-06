@@ -17,7 +17,7 @@ public final class Rocket {
         return status;
     }
 
-    public void setStatus(RocketStatus status) {
+    void setStatus(RocketStatus status) {
         this.status = Objects.requireNonNull(status);
     }
 
