@@ -256,4 +256,28 @@ public class RocketRepositoryTests {
             rocketRepository.assignRocketToMission(rocket, mission);
         });
     }
+
+    @Test
+    void shouldChangeMissionStatusToPending_WhenAtLeastOnRocketIsInRepair() {
+        // given
+        Rocket rocket = new Rocket();
+        Rocket rocketInRepair = new Rocket();
+        Rocket rocket3 = new Rocket();
+
+        Mission mission = new Mission();
+
+        rocketRepository.add(mission);
+        rocketRepository.add(rocket);
+        rocketRepository.add(rocketInRepair);
+        rocketRepository.add(rocket3);
+        rocketInRepair.setStatus(RocketStatus.IN_REPAIR);
+
+        // when
+        rocketRepository.assignRocketToMission(rocket, mission);
+        rocketRepository.assignRocketToMission(rocketInRepair, mission);
+        rocketRepository.assignRocketToMission(rocket3, mission);
+
+        // then
+        assertEquals(MissionStatus.PENDING, mission.getMissionStatus());
+    }
 }
