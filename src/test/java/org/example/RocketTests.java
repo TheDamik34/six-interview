@@ -3,6 +3,7 @@ package org.example;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RocketTests {
 
@@ -49,5 +50,16 @@ public class RocketTests {
 
         // then
         assertEquals(name, rocket.getName());
+    }
+
+    @Test
+    void shouldThrow_WhenNameIsInvalid() {
+        // given
+        String name = "";
+
+        // when + then
+        assertThrows(IllegalArgumentException.class, () -> {
+            Rocket rocket = new Rocket(name);
+        });
     }
 }
