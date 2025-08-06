@@ -42,7 +42,7 @@ public final class RocketRepository {
         missionList.add(mission);
     }
 
-    public void assignMission(Rocket rocket, Mission mission) {
+    public void assignRocketToMission(Rocket rocket, Mission mission) {
         if (rocket == null) {
             throw new NullPointerException("Rocket cannot be null");
         }

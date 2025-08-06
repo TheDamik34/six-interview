@@ -53,7 +53,7 @@ public class RocketRepositoryTests {
 
         // when
         rocketRepository.add(rocket);
-        rocketRepository.assignMission(rocket, mission);
+        rocketRepository.assignRocketToMission(rocket, mission);
 
         // then
         assertTrue(rocketRepository.getRocketsMission().containsKey(rocket));
@@ -69,11 +69,11 @@ public class RocketRepositoryTests {
 
         // when
         rocketRepository.add(rocket);
-        rocketRepository.assignMission(rocket, mission);
+        rocketRepository.assignRocketToMission(rocket, mission);
 
         // then
         assertThrows(IllegalStateException.class, () -> {
-            rocketRepository.assignMission(rocket, mission2);
+            rocketRepository.assignRocketToMission(rocket, mission2);
         });
     }
 
@@ -85,7 +85,7 @@ public class RocketRepositoryTests {
 
         // when + then
         assertThrows(IllegalStateException.class, () -> {
-            rocketRepository.assignMission(rocket, mission);
+            rocketRepository.assignRocketToMission(rocket, mission);
         });
     }
 
@@ -97,7 +97,7 @@ public class RocketRepositoryTests {
 
         // when
         rocketRepository.add(rocket);
-        rocketRepository.assignMission(rocket, mission);
+        rocketRepository.assignRocketToMission(rocket, mission);
 
         // then
         assertEquals(RocketStatus.IN_SPACE, rocket.getStatus());
@@ -136,7 +136,7 @@ public class RocketRepositoryTests {
 
         // when
         rocketRepository.add(rocket);
-        rocketRepository.assignMission(rocket, mission);
+        rocketRepository.assignRocketToMission(rocket, mission);
 
         // then
         assertTrue(rocketRepository.getRocketsAssignedToMission().containsKey(mission));
