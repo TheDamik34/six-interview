@@ -43,6 +43,10 @@ public final class RocketRepository {
             throw new IllegalArgumentException("Only missions that have SCHEDULED status can be added");
         }
 
+        if (missionList.contains(mission)) {
+            throw new IllegalStateException("The same mission cannot be added");
+        }
+
         missionList.add(mission);
     }
 
