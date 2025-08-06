@@ -174,4 +174,18 @@ public class RocketRepositoryTests {
             rocketRepository.add(rocket);
         });
     }
+
+    @Test
+    void shouldThrow_WhenAddingTheSameMission() {
+        // given
+        Mission mission = new Mission();
+
+        // when
+        rocketRepository.add(mission);
+
+        // then
+        assertThrows(IllegalStateException.class, () -> {
+            rocketRepository.add(mission);
+        });
+    }
 }
