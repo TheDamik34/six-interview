@@ -303,4 +303,26 @@ public class RocketRepositoryTests {
         // then
         assertEquals(MissionStatus.IN_PROGRESS, mission.getMissionStatus());
     }
+
+    @Test
+    void shouldThrow_WhenAssigningRocketInSpaceToMission() {
+        // given
+        Rocket rocket = new Rocket();
+        Rocket rocket2 = new Rocket();
+
+        Mission mission = new Mission();
+
+        rocketRepository.add(mission);
+
+        rocketRepository.add(rocket);
+        rocketRepository.add(rocket2);
+        rocket2.setStatus(RocketStatus.IN_SPACE);
+
+        rocketRepository.assignRocketToMission(rocket, mission);
+
+        // when + then
+        assertThrows(IllegalStateException.class, () -> {
+            rocketRepository.assignRocketToMission(rocket2, mission);
+        });
+    }
 }
