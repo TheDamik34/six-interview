@@ -71,11 +71,10 @@ public final class RocketRepository {
             throw new IllegalStateException("Rocket already have a mission assigned");
         }
 
-        if (rocket.getStatus() == RocketStatus.IN_REPAIR) {
-            mission.setMissionStatus(MissionStatus.PENDING);
-        }
+        handleMissionStatus(rocket, mission);
 
         rocket.setStatus(RocketStatus.IN_SPACE);
+
         rocketMissionMap.put(rocket, mission);
 
         if (missionToRocketsMap.containsKey(mission)) {
@@ -84,6 +83,22 @@ public final class RocketRepository {
             List<Rocket> rockets = new ArrayList<>();
             rockets.add(rocket);
             missionToRocketsMap.put(mission, rockets);
+        }
+    }
+
+    private void handleMissionStatus(Rocket rocket, Mission mission) {
+        if (rocket == null) {
+            throw new NullPointerException("Rocket is null");
+        }
+
+        if (mission == null) {
+            throw new NullPointerException("Mission is null");
+        }
+
+        if (rocket.getStatus() == RocketStatus.IN_REPAIR) {
+            mission.setMissionStatus(MissionStatus.PENDING);
+        } else {
+            mission.setMissionStatus(MissionStatus.IN_PROGRESS);
         }
     }
 
