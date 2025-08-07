@@ -344,4 +344,27 @@ public class RocketRepositoryTests {
         // then
         assertEquals(2, mission.getAssignedRocketsCount());
     }
+
+    @Test
+    void shouldIncrementRocketsCountOnMissionObject_WhenRocketIsAssignedToMission2() {
+        // given
+        Rocket rocket = new Rocket();
+        Rocket rocket2 = new Rocket();
+        rocketRepository.add(rocket);
+        rocketRepository.add(rocket2);
+
+        Mission mission = new Mission();
+        rocketRepository.add(mission);
+
+        Mission mission2 = new Mission();
+        rocketRepository.add(mission2);
+
+        // when
+        rocketRepository.assignRocketToMission(rocket, mission);
+        rocketRepository.assignRocketToMission(rocket2, mission);
+
+        // then
+        assertEquals(2, mission.getAssignedRocketsCount());
+        assertEquals(0, mission2.getAssignedRocketsCount());
+    }
 }
