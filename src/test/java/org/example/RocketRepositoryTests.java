@@ -398,8 +398,11 @@ public class RocketRepositoryTests {
         expected.put(luna1, List.of(falconHeavy));
         expected.put(transit, List.of(redDragon));
 
+        List<Mission> expectedKeyOrder = List.of(transit, luna1);
+
         assertThat(summaryOfMissions).isNotNull();
         assertThat(summaryOfMissions).hasSize(2);
         assertThat(summaryOfMissions).containsExactlyEntriesOf(expected);
+        assertThat(summaryOfMissions.keySet()).containsExactlyElementsOf(expectedKeyOrder);
     }
 }

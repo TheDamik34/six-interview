@@ -1,21 +1,18 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public final class RocketRepository {
     private final List<Rocket> rocketList;
     private final List<Mission> missionList;
     private final Map<Rocket, Mission> rocketMissionMap;
-    private final Map<Mission, List<Rocket>> missionToRocketsMap;
+    private final TreeMap<Mission, List<Rocket>> missionToRocketsMap;
 
     public RocketRepository() {
         this.rocketList = new ArrayList<>();
         this.missionList = new ArrayList<>();
         this.rocketMissionMap = new HashMap<>();
-        this.missionToRocketsMap = new HashMap<>();
+        this.missionToRocketsMap = new TreeMap<>();
     }
 
     public void add(Rocket rocket) {
@@ -122,6 +119,10 @@ public final class RocketRepository {
         } else {
             mission.setMissionStatus(MissionStatus.IN_PROGRESS);
         }
+    }
+
+    public TreeMap<Mission, List<Rocket>> getSummaryOfMissions() {
+        return missionToRocketsMap;
     }
 
     List<Mission> getMissions() {
