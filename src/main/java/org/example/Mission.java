@@ -57,6 +57,12 @@ public final class Mission implements Comparable<Mission> {
 
     @Override
     public int compareTo(Mission o) {
-        return Integer.compare(this.assignedRocketsCount, o.assignedRocketsCount) * -1;
+        int result = Integer.compare(this.assignedRocketsCount, o.assignedRocketsCount);
+
+        if (result == 0) {
+            result = String.CASE_INSENSITIVE_ORDER.compare(this.name, o.name);
+        }
+
+        return result * -1;
     }
 }
