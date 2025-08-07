@@ -3,8 +3,12 @@ package org.example;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RocketRepositoryTests {
@@ -366,5 +370,36 @@ public class RocketRepositoryTests {
         // then
         assertEquals(2, mission.getAssignedRocketsCount());
         assertEquals(0, mission2.getAssignedRocketsCount());
+    }
+
+    @Test
+    void shouldReturnSummaryOfMissionsByRocketsAssigned() {
+        // given
+        Rocket redDragon = new Rocket("Red Dragon");
+        rocketRepository.add(redDragon);
+
+        Rocket falconHeavy = new Rocket("Falcon Heavy");
+        rocketRepository.add(falconHeavy);
+
+        Mission luna1 = new Mission("Luna1");
+        rocketRepository.add(luna1);
+
+        Mission transit = new Mission("Transit");
+        rocketRepository.add(transit);
+
+        rocketRepository.assignRocketToMission(redDragon, transit);
+        rocketRepository.assignRocketToMission(falconHeavy, luna1);
+
+        // when
+        TreeMap<Mission, List<Rocket>> summaryOfMissions = rocketRepository.getSummaryOfMissions();
+
+        // then
+        TreeMap<Mission, List<Rocket>> expected = new TreeMap<>();
+        expected.put(luna1, List.of(falconHeavy));
+        expected.put(transit, List.of(redDragon));
+
+        assertThat(summaryOfMissions).isNotNull();
+        assertThat(summaryOfMissions).hasSize(2);
+        assertThat(summaryOfMissions).containsExactlyEntriesOf(expected);
     }
 }
