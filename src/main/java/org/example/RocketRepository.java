@@ -80,6 +80,7 @@ public final class RocketRepository {
         }
 
         handleMissionStatus(rocket, mission);
+        mission.incrementRocketsCount();
 
         if (rocket.getStatus() == RocketStatus.ON_GROUND) {
             rocket.setStatus(RocketStatus.IN_SPACE);
