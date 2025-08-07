@@ -14,6 +14,7 @@ public class MissionTests {
 
         // then
         assertEquals(MissionStatus.SCHEDULED, mission.getMissionStatus());
+        assertEquals(0, mission.getAssignedRocketsCount());
     }
 
     @Test
@@ -26,6 +27,7 @@ public class MissionTests {
 
         // then
         assertEquals(name, mission.getName());
+        assertEquals(0, mission.getAssignedRocketsCount());
     }
 
     @Test
