@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.Objects;
 
-public final class Mission {
+public final class Mission implements Comparable<Mission> {
     private String name;
     private MissionStatus missionStatus;
 
@@ -53,5 +53,10 @@ public final class Mission {
     @Override
     public String toString() {
         return "{MissionName: " + name + ", MissionStatus: " + missionStatus + "}";
+    }
+
+    @Override
+    public int compareTo(Mission o) {
+        return Integer.compare(this.assignedRocketsCount, o.assignedRocketsCount);
     }
 }
