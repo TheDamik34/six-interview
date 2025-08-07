@@ -122,7 +122,13 @@ public final class RocketRepository {
     }
 
     public TreeMap<Mission, List<Rocket>> getSummaryOfMissions() {
-        return missionToRocketsMap;
+        TreeMap<Mission, List<Rocket>> allMissionsMap = new TreeMap<>(missionToRocketsMap);
+
+        for (Mission mission : missionList) {
+            allMissionsMap.putIfAbsent(mission, List.of());
+        }
+
+        return allMissionsMap;
     }
 
     List<Mission> getMissions() {
