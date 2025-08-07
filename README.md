@@ -27,4 +27,6 @@ requirement6:
 
 requirement7:
  - I havent started with name for Mission and Rocket implementation as i wanted to be straight forward, but now i have added handling for names too
-
+ - For implementation of summary method I think some refactor will be required. My approach is to store number of assigned rockets directly in Mission class and then use treemap to store missions and list of rockets in order by mission key
+ - i first start with implementing count storage in mission class
+ - Then implement comparable interface on Mission class
