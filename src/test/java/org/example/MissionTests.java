@@ -97,5 +97,6 @@ public class MissionTests {
         assertThat(missionList).hasSize(3);
         assertThat(missionList).isSortedAccordingTo(Mission::compareTo);
         assertThat(missionList).hasSameElementsAs(expectedList);
+        assertThat(missionList).containsExactlyElementsOf(expectedList);
     }
 }
