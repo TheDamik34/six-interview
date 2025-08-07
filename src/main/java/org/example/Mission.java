@@ -46,6 +46,10 @@ public final class Mission {
         this.missionStatus = Objects.requireNonNull(missionStatus);
     }
 
+    void incrementRocketsCount() {
+        assignedRocketsCount++;
+    }
+
     @Override
     public String toString() {
         return "{MissionName: " + name + ", MissionStatus: " + missionStatus + "}";
