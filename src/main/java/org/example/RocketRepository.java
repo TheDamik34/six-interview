@@ -150,4 +150,21 @@ public final class RocketRepository {
     int rocketsCount() {
         return rocketList.size();
     }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        TreeMap<Mission, List<Rocket>> summaryMap = getSummaryOfMissions();
+
+        for (Mission mission: summaryMap.keySet()) {
+            stringBuilder.append(mission);
+            stringBuilder.append("\n");
+            for (Rocket rocket: summaryMap.get(mission)) {
+                stringBuilder.append("    ").append(rocket);
+                stringBuilder.append("\n");
+            }
+        }
+
+        return stringBuilder.toString();
+    }
 }
