@@ -6,6 +6,8 @@ public final class Mission {
     private String name;
     private MissionStatus missionStatus;
 
+    private int assignedRocketsCount = 0;
+
     public Mission() {
         this.name = "Unknown Mission";
         this.missionStatus = MissionStatus.SCHEDULED;
@@ -34,6 +36,10 @@ public final class Mission {
 
     public MissionStatus getMissionStatus() {
         return missionStatus;
+    }
+
+    public int getAssignedRocketsCount() {
+        return assignedRocketsCount;
     }
 
     void setMissionStatus(MissionStatus missionStatus) {
