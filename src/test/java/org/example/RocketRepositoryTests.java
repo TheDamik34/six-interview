@@ -405,4 +405,37 @@ public class RocketRepositoryTests {
         assertThat(summaryOfMissions).containsExactlyEntriesOf(expected);
         assertThat(summaryOfMissions.keySet()).containsExactlyElementsOf(expectedKeyOrder);
     }
+
+    @Test
+    void shouldReturnCorrectSummaryOfMissionsByRockets_WhenRocketHasNotBeenAssignToMission() {
+        // given
+        Rocket redDragon = new Rocket("Red Dragon");
+        rocketRepository.add(redDragon);
+
+        Rocket falconHeavy = new Rocket("Falcon Heavy");
+        rocketRepository.add(falconHeavy);
+
+        Mission luna1 = new Mission("Luna1");
+        rocketRepository.add(luna1);
+
+        Mission transit = new Mission("Transit");
+        rocketRepository.add(transit);
+
+        rocketRepository.assignRocketToMission(redDragon, transit);
+
+        // when
+        TreeMap<Mission, List<Rocket>> summaryOfMissions = rocketRepository.getSummaryOfMissions();
+
+        // then
+        TreeMap<Mission, List<Rocket>> expected = new TreeMap<>();
+        expected.put(luna1, List.of());
+        expected.put(transit, List.of(redDragon));
+
+        List<Mission> expectedKeyOrder = List.of(transit, luna1);
+
+        assertThat(summaryOfMissions).isNotNull();
+        assertThat(summaryOfMissions).hasSize(2);
+        assertThat(summaryOfMissions).containsExactlyEntriesOf(expected);
+        assertThat(summaryOfMissions.keySet()).containsExactlyElementsOf(expectedKeyOrder);
+    }
 }
