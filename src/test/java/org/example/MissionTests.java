@@ -99,4 +99,35 @@ public class MissionTests {
         assertThat(missionList).hasSameElementsAs(expectedList);
         assertThat(missionList).containsExactlyElementsOf(expectedList);
     }
+
+    @Test
+    void shouldPreserveDescendingAlphabeticOrder_WhenMissionsHaveSameNumberOfRocketsAssigned() {
+        // given
+        Mission mission1 = new Mission("aa");
+        mission1.incrementRocketsCount();
+
+        Mission mission2 = new Mission("ab");
+        mission2.incrementRocketsCount();
+        mission2.incrementRocketsCount();
+
+        Mission mission3 = new Mission("ac");
+        mission3.incrementRocketsCount();
+        mission3.incrementRocketsCount();
+
+        Mission mission4 = new Mission("zz");
+        mission4.incrementRocketsCount();
+        mission4.incrementRocketsCount();
+
+        List<Mission> missionList = Arrays.asList(mission2, mission1, mission4, mission3);
+
+        // when
+        Collections.sort(missionList);
+
+        // then
+        List<Mission> expectedList = Arrays.asList(mission4, mission3, mission2, mission1);
+        assertThat(missionList).hasSize(4);
+        assertThat(missionList).isSortedAccordingTo(Mission::compareTo);
+        assertThat(missionList).hasSameElementsAs(expectedList);
+        assertThat(missionList).containsExactlyElementsOf(expectedList);
+    }
 }
