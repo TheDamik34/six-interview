@@ -1,3 +1,8 @@
+where i used AI:
+ - to figure out how to assign correct statuses of mission
+ - to remind myself what methods i should use for unit testing correct order of treemap
+
+
 requirement 1:
  - first I want to start with an implementation of simple rocker object that later we will store in the repository
  - I also create enum for storing status of the rocket
@@ -31,4 +36,4 @@ requirement7:
  - i first start with implementing count storage in mission class
  - Then implement comparable interface on Mission class
  - i implemented compareTo method to sort in descending order to prevent calling reverse method. It is more optimal
-
+ - I changed the implementation of 'missionToRocketsMap' from HashMap to TreeMap to optimize read 
