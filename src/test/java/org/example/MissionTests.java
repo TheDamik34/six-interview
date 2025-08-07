@@ -51,4 +51,18 @@ public class MissionTests {
             Mission rocket = new Mission(name);
         });
     }
+
+    @Test
+    void shouldIncrementAssignedRocketsCount() {
+        // given
+        String name = "Transit";
+        Mission mission = new Mission(name);
+
+        // when
+        mission.incrementRocketsCount();
+
+        // then
+        assertEquals(name, mission.getName());
+        assertEquals(1, mission.getAssignedRocketsCount());
+    }
 }
